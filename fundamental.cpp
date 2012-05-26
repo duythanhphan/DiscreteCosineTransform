@@ -36,7 +36,14 @@ void ImageDisplayer::loadImage()
   if (!fileName.isEmpty())
     {
       cout<<fileName.toStdString()<<endl;
-      this->img=cvLoadImage(fileName.toStdString().c_str(),4);
+      this->img=cvLoadImage(fileName.toStdString().c_str(),1);
+      IplImage *im_gray = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,1);
+      //Mat mtx(im_gray);
+      Mat mtx_color=imread(fileName.toStdString().c_str());
+      Mat mtx;
+      cvtColor(mtx_color,mtx,CV_RGB2GRAY);
+     // Mat mtxb = mtx >256;
+      Mat temp=img1D_DCT(mtx);
       QImage qimg=IplImage2QImage(this->img);
       imageLabel->setPixmap(QPixmap::fromImage(qimg));
       scaleFactor = 1.0;
@@ -147,10 +154,7 @@ void ImageDisplayer::adjustScrollBar(QScrollBar *scrollBar, double factor)
                           + ((factor - 1) * scrollBar->pageStep()/2)));
 }
 
-void ImageDisplayer::on_actionGenerate_triggered()
-{
 
-}
 
 //void ImageDisplayer::initializeGL()
 //{

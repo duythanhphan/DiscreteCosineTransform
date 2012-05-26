@@ -28,7 +28,7 @@ win32 {
 }
 
 unix {
-            LIBS+= -lGLU -lopencv_core -lopencv_highgui
+            LIBS+= -lGLU -lopencv_core -lopencv_highgui -lopencv_imgproc
 }
 
 RESOURCES += \

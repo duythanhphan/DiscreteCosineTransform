@@ -1,5 +1,6 @@
 #include"libs.h"
 
+
  IplImage* qImage2IplImage(const QImage& qImage)
 {
   int width = qImage.width();
@@ -54,3 +55,27 @@
       return QImage();
     }
 }
+
+ Mat img1D_DCT(Mat mtx)
+ {
+   Mat dctResult=mtx;
+   //First-Row-Then-Column
+   cout<<mtx.rows<<' '<<mtx.cols<<endl;
+   //cout<<mtx.at<int8_t>(0,0);
+   //cout<<mtx;
+   ofstream outfile;
+   outfile.open("debug.log",ios::out);
+   for(int i=0;i<mtx.rows;i++)
+     {
+       outfile<<i<<'\n';
+     for(int j=0;j<mtx.cols;j++)
+       {
+
+         outfile<<mtx.row(i).col(j)<<'\t';
+       }
+     outfile<<endl;
+     }
+   //outfile<<mtx;
+
+   return mtx;
+ }
