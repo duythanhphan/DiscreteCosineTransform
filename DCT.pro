@@ -12,11 +12,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     libs.cpp \
-    fundamental.cpp
+    fundamental.cpp \
+    1DDCT.cpp \
+    2DDCT.cpp
 
 HEADERS  += \
     fundamental.h \
-    libs.h
+    libs.h \
+    1DDCT.h \
+    2DDCT.h
 
 FORMS    += mainwindow.ui
 win32 {

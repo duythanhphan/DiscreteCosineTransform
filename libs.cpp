@@ -1,7 +1,7 @@
 #include"libs.h"
 
 
- IplImage* qImage2IplImage(const QImage& qImage)
+IplImage* qImage2IplImage(const QImage& qImage)
 {
   int width = qImage.width();
   int height = qImage.height();
@@ -28,7 +28,7 @@
 }
 
 
- QImage IplImage2QImage(const _IplImage *iplImage)
+QImage IplImage2QImage(const _IplImage *iplImage)
 {
   int height = iplImage->height;
   int width = iplImage->width;
@@ -56,37 +56,3 @@
     }
 }
 
- Mat img1D_DCT(Mat mtx)
- {
-   Mat res,middle;
-   //First-Row-Then-Column
-   res=mtx.clone();
-   cout<<mtx.row(0).col(0)<<endl;
-   cout<<mtx.at<uchar>(0,0)<<endl;
-   res.at<uchar>(0,0)=233;
-   cout<<res.row(0).col(0)<<endl;
-
-
-//   cout<<mtx.rows<<' '<<mtx.cols<<endl;
-
-cout<<mtx.row(0).col(0)<<endl;
-cout<<mtx.at<uchar>(0,0)<<endl;
-//   cout<<2*mtx.row(0).col(0)<<endl;
-//   cout<<1.5*mtx.row(0).col(0)<<endl;
-   //cout<<mtx;
-//   ofstream outfile;
-//   outfile.open("debug.log",ios::out);
-//   for(int i=0;i<mtx.rows;i++)
-//     {
-//       outfile<<i<<'\n';
-//     for(int j=0;j<mtx.cols;j++)
-//       {
-
-//         outfile<<mtx.row(i).col(j)<<'\t';
-//       }
-//     outfile<<endl;
-//     }
-   //outfile<<mtx;
-
-   return res;
- }

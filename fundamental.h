@@ -32,6 +32,7 @@
 #include"libs.h"
 #include"ui_mainwindow.h"
 
+
 using namespace std;
 using namespace cv;
 namespace Ui{
@@ -47,6 +48,8 @@ public:
   void Display();
 public:
   Mat mtx,mtx_color;
+  Mat M1DDCT,Mi1DDCT;
+
   IplImage *img;
 public slots:
   void loadImage();
@@ -58,6 +61,7 @@ public slots:
   void on_action_Fit_to_Window_triggered();
   void on_action_Actual_Size_triggered();
   void on_action_RowThenColumn_triggered();
+  void on_actionI1DDCT_triggered();
 private:
   Ui::ImageDisplayer *ui;
   QLabel *imageLabel;

@@ -157,58 +157,17 @@ void ImageDisplayer::adjustScrollBar(QScrollBar *scrollBar, double factor)
 
 void ImageDisplayer::on_action_RowThenColumn_triggered()
 {
-  Mat res=img1D_DCT(mtx);
-  IplImage* imgQ=new IplImage(res);
+  M1DDCT=img1D_DCT(mtx);
+  IplImage* imgQ=new IplImage(M1DDCT);
   QImage qimg=IplImage2QImage(imgQ);
   imageLabel->setPixmap(QPixmap::fromImage(qimg));
 }
 
-//void ImageDisplayer::initializeGL()
-//{
-//  glDisable(GL_TEXTURE_2D);
-//  glDisable(GL_DEPTH_TEST);
-//  glDisable(GL_COLOR_MATERIAL);
-//  glEnable(GL_BLEND);
-//  glEnable(GL_POLYGON_SMOOTH);
-//  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//  glClearColor(0, 0, 0, 0);
-//}
+void ImageDisplayer::on_actionI1DDCT_triggered()
+{
+  Mi1DDCT=imgInverse_1D_DCT(M1DDCT);
+  IplImage* imgQ=new IplImage(Mi1DDCT);
+  QImage qimg=IplImage2QImage(imgQ);
+  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+}
 
-//void ImageDisplayer::resizeGL(int w, int h)
-//{
-//  glViewport(0, 0, w, h);
-//  glMatrixMode(GL_PROJECTION);
-//  glLoadIdentity();
-//  gluOrtho2D(0, w, 0, h); // set origin to bottom left corner
-//  //    gluPerspective(52.0f, 1.3333f, 0.1f, 100.0f);
-//  glMatrixMode(GL_MODELVIEW);
-//  glLoadIdentity();
-//}
-
-////extern static QImage IplImage2QImage(const IplImage *iplImage);
-
-//void ImageDisplayer::paintGL()
-//{
-//  if(this->img)
-//    {
-//      glClear (GL_COLOR_BUFFER_BIT);
-//      glClearColor(0.0,0.0,0.0,1.0);
-//      glMatrixMode(GL_PROJECTION);
-//#ifndef QT_OPENGL_ES_2
-//      glEnable(GL_TEXTURE_2D);
-//#endif
-//      glPushMatrix();
-//      glLoadIdentity();
-//      gluOrtho2D(0.0,img->width, 0.0, img->width);
-//      glMatrixMode(GL_MODELVIEW);
-//      glPushMatrix();
-//      glLoadIdentity();
-//      QImage qimg=IplImage2QImage(this->img);
-//      //bindTexture(qimg,GL_TEXTURE_2D,GL_RGBA);
-//      glDrawPixels(img->width,img->height,GL_RGB,GL_UNSIGNED_BYTE,img->imageData);
-//      glMatrixMode(GL_PROJECTION);
-//      glPopMatrix();
-//      glMatrixMode(GL_MODELVIEW);
-//      glPopMatrix();
-//    }
-//}
