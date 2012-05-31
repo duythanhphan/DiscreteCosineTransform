@@ -46,7 +46,7 @@ public:
   ~ImageDisplayer();
   void Display();
 public:
-  Mat mtx;
+  Mat mtx,mtx_color;
   IplImage *img;
 public slots:
   void loadImage();
@@ -57,7 +57,7 @@ public slots:
   void on_actionZoom_Out_triggered();
   void on_action_Fit_to_Window_triggered();
   void on_action_Actual_Size_triggered();
-
+  void on_action_RowThenColumn_triggered();
 private:
   Ui::ImageDisplayer *ui;
   QLabel *imageLabel;

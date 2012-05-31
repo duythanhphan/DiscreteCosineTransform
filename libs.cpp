@@ -58,24 +58,35 @@
 
  Mat img1D_DCT(Mat mtx)
  {
-   Mat dctResult=mtx;
+   Mat res,middle;
    //First-Row-Then-Column
-   cout<<mtx.rows<<' '<<mtx.cols<<endl;
-   //cout<<mtx.at<int8_t>(0,0);
-   //cout<<mtx;
-   ofstream outfile;
-   outfile.open("debug.log",ios::out);
-   for(int i=0;i<mtx.rows;i++)
-     {
-       outfile<<i<<'\n';
-     for(int j=0;j<mtx.cols;j++)
-       {
+   res=mtx.clone();
+   cout<<mtx.row(0).col(0)<<endl;
+   cout<<mtx.at<uchar>(0,0)<<endl;
+   res.at<uchar>(0,0)=233;
+   cout<<res.row(0).col(0)<<endl;
 
-         outfile<<mtx.row(i).col(j)<<'\t';
-       }
-     outfile<<endl;
-     }
+
+//   cout<<mtx.rows<<' '<<mtx.cols<<endl;
+
+cout<<mtx.row(0).col(0)<<endl;
+cout<<mtx.at<uchar>(0,0)<<endl;
+//   cout<<2*mtx.row(0).col(0)<<endl;
+//   cout<<1.5*mtx.row(0).col(0)<<endl;
+   //cout<<mtx;
+//   ofstream outfile;
+//   outfile.open("debug.log",ios::out);
+//   for(int i=0;i<mtx.rows;i++)
+//     {
+//       outfile<<i<<'\n';
+//     for(int j=0;j<mtx.cols;j++)
+//       {
+
+//         outfile<<mtx.row(i).col(j)<<'\t';
+//       }
+//     outfile<<endl;
+//     }
    //outfile<<mtx;
 
-   return mtx;
+   return res;
  }

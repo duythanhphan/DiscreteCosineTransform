@@ -36,15 +36,16 @@ void ImageDisplayer::loadImage()
   if (!fileName.isEmpty())
     {
       cout<<fileName.toStdString()<<endl;
-      this->img=cvLoadImage(fileName.toStdString().c_str(),1);
-      IplImage *im_gray = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,1);
-      //Mat mtx(im_gray);
-      Mat mtx_color=imread(fileName.toStdString().c_str());
-      Mat mtx;
+      //this->img=cvLoadImage(fileName.toStdString().c_str(),CV_LOAD_IMAGE_GRAYSCALE);
+      //img=im_gray;
+      mtx_color=imread(fileName.toStdString().c_str());
       cvtColor(mtx_color,mtx,CV_RGB2GRAY);
+     //Mat mtxQimg;
+      //cvtColor(mtx,mtxQimg,CV_BGR2RGB);
      // Mat mtxb = mtx >256;
-      Mat temp=img1D_DCT(mtx);
-      QImage qimg=IplImage2QImage(this->img);
+      img=new IplImage(mtx);
+       QImage qimg=IplImage2QImage(this->img);
+      //QImage qimg((uchar*)mtxQimg.data,mtxQimg.cols,mtxQimg.rows,QImage::Format_RGB32);
       imageLabel->setPixmap(QPixmap::fromImage(qimg));
       scaleFactor = 1.0;
 
@@ -154,7 +155,13 @@ void ImageDisplayer::adjustScrollBar(QScrollBar *scrollBar, double factor)
                           + ((factor - 1) * scrollBar->pageStep()/2)));
 }
 
-
+void ImageDisplayer::on_action_RowThenColumn_triggered()
+{
+  Mat res=img1D_DCT(mtx);
+  IplImage* imgQ=new IplImage(res);
+  QImage qimg=IplImage2QImage(imgQ);
+  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+}
 
 //void ImageDisplayer::initializeGL()
 //{

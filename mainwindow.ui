@@ -46,7 +46,22 @@
     </property>
     <addaction name="action_About"/>
    </widget>
+   <widget class="QMenu" name="menu_1DDCT">
+    <property name="title">
+     <string>&amp;1DDCT</string>
+    </property>
+    <addaction name="action_RowThenColumn"/>
+   </widget>
+   <widget class="QMenu" name="menu2DDCT">
+    <property name="title">
+     <string>2DDCT</string>
+    </property>
+    <addaction name="actionWholeImage"/>
+    <addaction name="action8_8_blocks"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menu_1DDCT"/>
+   <addaction name="menu2DDCT"/>
    <addaction name="menu_View"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -119,6 +134,26 @@
   <action name="actionGenerate">
    <property name="text">
     <string>Generate</string>
+   </property>
+  </action>
+  <action name="actionR">
+   <property name="text">
+    <string>R</string>
+   </property>
+  </action>
+  <action name="action_RowThenColumn">
+   <property name="text">
+    <string>&amp;RowThenColumn</string>
+   </property>
+  </action>
+  <action name="actionWholeImage">
+   <property name="text">
+    <string>WholeImage</string>
+   </property>
+  </action>
+  <action name="action8_8_blocks">
+   <property name="text">
+    <string>8*8 blocks</string>
    </property>
   </action>
  </widget>
