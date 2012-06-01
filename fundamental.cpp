@@ -164,9 +164,9 @@ void ImageDisplayer::on_action_RowThenColumn_triggered()
 //  QImage qimg=IplImage2QImage(imgQ);
 //  imageLabel->setPixmap(QPixmap::fromImage(qimg));
   int et=timer.elapsed();
-  cout<<et;
+ // cout<<et;
   QMessageBox finish(this);
-  QString st("1DDCT finished!\nTime used:");
+  QString st("1DDCT finished!\nTime Elapsed:");
   QString time=QString::number(et,10);
   st.append(time);
   st.append(" ms");
@@ -193,10 +193,90 @@ void ImageDisplayer::on_actionI1DDCT_triggered()
   st.append(" ms\n");
   st.append("myPSNR:");
   st.append(QString::number(mypsnr));
-  st.append("\nPSNR:");
+  st.append("\ncvPSNR:");
   st.append(QString::number(psnr));
   QMessageBox finish(this);
   finish.setText(st);
   finish.exec();
 }
 
+void ImageDisplayer::on_actionWholeImage_triggered()
+{
+  QElapsedTimer timer;
+  timer.start();
+  M2DDCT_whole=img2D_DCT(mtx);
+  int et=timer.elapsed();
+  QMessageBox finish(this);
+  QString st("2DDCT finished!\nTime Elapsed:");
+  QString time=QString::number(et,10);
+  st.append(time);
+  st.append(" ms");
+  finish.setText(st);
+  finish.exec();
+}
+
+void ImageDisplayer::on_actionInverseWholeImage_triggered()
+{
+  QElapsedTimer timer;
+  timer.start();
+  Mi2DDCT_whole=imgInverse_2D_DCT(M2DDCT_whole);
+  int et=timer.elapsed();
+  double mypsnr=myPSNR(mtx,Mi2DDCT_whole);
+  double psnr=PSNR(mtx,Mi2DDCT_whole);
+  IplImage* imgQ=new IplImage(Mi2DDCT_whole);
+  QImage qimg=IplImage2QImage(imgQ);
+  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+
+  QString time=QString::number(et,10);
+  QString st("Inverse 2DDCT on whole image finished!\n");
+  st.append("Time Elapsed:");
+  st.append(time);
+  st.append(" ms\n");
+  st.append("myPSNR:");
+  st.append(QString::number(mypsnr));
+  st.append("\ncvPSNR:");
+  st.append(QString::number(psnr));
+  QMessageBox finish(this);
+  finish.setText(st);
+  finish.exec();
+}
+
+void ImageDisplayer::on_action8_8_blocks_triggered()
+{
+  QElapsedTimer timer;
+  timer.start();
+  M88DCT=img88DCT(mtx);
+  int et=timer.elapsed();
+  QMessageBox finish(this);
+  QString st("2DDCT by 8*8 blocks  finished!\nTime used:");
+  st.append(QString::number(et));
+  st.append(" ms");
+  finish.setText(st);
+  finish.exec();
+}
+
+void ImageDisplayer::on_actionIn_verse_8_8_blocks_triggered()
+{
+  QElapsedTimer timer;
+  timer.start();
+  M88iDCT=img88Inverse_DCT(M88DCT,mtx.rows,mtx.cols);
+  int et=timer.elapsed();
+  double mypsnr=myPSNR(mtx,M88iDCT);
+  double psnr=PSNR(mtx,M88iDCT);
+  IplImage* imgQ=new IplImage(M88iDCT);
+  QImage qimg=IplImage2QImage(imgQ);
+  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+
+  QString time=QString::number(et,10);
+  QString st("Inverse 2DDCT on 8*8 blocks finished!\n");
+  st.append("Time Elapsed:");
+  st.append(time);
+  st.append(" ms\n");
+  st.append("myPSNR:");
+  st.append(QString::number(mypsnr));
+  st.append("\ncvPSNR:");
+  st.append(QString::number(psnr));
+  QMessageBox finish(this);
+  finish.setText(st);
+  finish.exec();
+}

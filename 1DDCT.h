@@ -12,4 +12,4 @@ double DCT_sum_col(Mat mtx,int i,int u,int N);
 double iDCT_sum_row(Mat mtx,int i,int x,int N);
 double iDCT_sum_col(Mat mtx,int i,int x,int N);
 
-#endif // 1DDCT_H
+#endif // D1DDCT_H

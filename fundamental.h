@@ -49,7 +49,9 @@ public:
 public:
   Mat mtx,mtx_color;
   Mat M1DDCT,Mi1DDCT;
-
+  Mat M2DDCT_whole,Mi2DDCT_whole;
+  vector<Mat> M88DCT;
+  Mat M88iDCT;
   IplImage *img;
 public slots:
   void loadImage();
@@ -62,6 +64,10 @@ public slots:
   void on_action_Actual_Size_triggered();
   void on_action_RowThenColumn_triggered();
   void on_actionI1DDCT_triggered();
+  void on_actionWholeImage_triggered();
+  void on_actionInverseWholeImage_triggered();
+  void on_action8_8_blocks_triggered();
+  void on_actionIn_verse_8_8_blocks_triggered();
 private:
   Ui::ImageDisplayer *ui;
   QLabel *imageLabel;

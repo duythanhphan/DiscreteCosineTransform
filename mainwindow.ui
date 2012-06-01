@@ -58,7 +58,9 @@
      <string>&amp;2DDCT</string>
     </property>
     <addaction name="actionWholeImage"/>
+    <addaction name="actionInverseWholeImage"/>
     <addaction name="action8_8_blocks"/>
+    <addaction name="actionIn_verse_8_8_blocks"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_1DDCT"/>
@@ -149,17 +151,27 @@
   </action>
   <action name="actionWholeImage">
    <property name="text">
-    <string>WholeImage</string>
+    <string>&amp;WholeImage</string>
    </property>
   </action>
   <action name="action8_8_blocks">
    <property name="text">
-    <string>8*8 blocks</string>
+    <string>&amp;8*8 blocks</string>
    </property>
   </action>
   <action name="actionI1DDCT">
    <property name="text">
     <string>&amp;i1DDCT</string>
+   </property>
+  </action>
+  <action name="actionInverseWholeImage">
+   <property name="text">
+    <string>&amp;InverseWholeImage</string>
+   </property>
+  </action>
+  <action name="actionIn_verse_8_8_blocks">
+   <property name="text">
+    <string>In&amp;verse 8*8 blocks</string>
    </property>
   </action>
  </widget>
