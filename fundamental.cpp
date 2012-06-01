@@ -157,17 +157,46 @@ void ImageDisplayer::adjustScrollBar(QScrollBar *scrollBar, double factor)
 
 void ImageDisplayer::on_action_RowThenColumn_triggered()
 {
+  QElapsedTimer timer;
+  timer.start();
   M1DDCT=img1D_DCT(mtx);
-  IplImage* imgQ=new IplImage(M1DDCT);
-  QImage qimg=IplImage2QImage(imgQ);
-  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+//  IplImage* imgQ=new IplImage(M1DDCT);
+//  QImage qimg=IplImage2QImage(imgQ);
+//  imageLabel->setPixmap(QPixmap::fromImage(qimg));
+  int et=timer.elapsed();
+  cout<<et;
+  QMessageBox finish(this);
+  QString st("1DDCT finished!\nTime used:");
+  QString time=QString::number(et,10);
+  st.append(time);
+  st.append(" ms");
+  finish.setText(st);
+  finish.exec();
 }
 
 void ImageDisplayer::on_actionI1DDCT_triggered()
 {
+  QElapsedTimer timer;
+  timer.start();
   Mi1DDCT=imgInverse_1D_DCT(M1DDCT);
+  int et=timer.elapsed();
+  double mypsnr=myPSNR(mtx,Mi1DDCT);
+  double psnr=PSNR(mtx,Mi1DDCT);
   IplImage* imgQ=new IplImage(Mi1DDCT);
   QImage qimg=IplImage2QImage(imgQ);
   imageLabel->setPixmap(QPixmap::fromImage(qimg));
+
+  QString time=QString::number(et,10);
+  QString st("Inverse 1DDCT finished!\n");
+  st.append("Time Elapsed:");
+  st.append(time);
+  st.append(" ms\n");
+  st.append("myPSNR:");
+  st.append(QString::number(mypsnr));
+  st.append("\nPSNR:");
+  st.append(QString::number(psnr));
+  QMessageBox finish(this);
+  finish.setText(st);
+  finish.exec();
 }
 

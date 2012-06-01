@@ -56,3 +56,28 @@ QImage IplImage2QImage(const _IplImage *iplImage)
     }
 }
 
+double CalcMSE(Mat origin, Mat approx)
+{
+  double sum,res;
+  sum=0;
+  for(int i=0;i<origin.rows;i++)
+    {
+      for(int j=0;j<origin.cols;j++)
+        {
+          sum+=pow(origin.at<uchar>(i,j)-approx.at<uchar>(i,j),2);
+        }
+    }
+  res=sum/(origin.rows*origin.cols);
+  return res;
+}
+
+double CalcPSNR(double mse)
+{
+  return 10*log(pow(255,2)/mse)/log(10);
+}
+
+double myPSNR(Mat origin, Mat approx)
+{
+  double mse=CalcMSE(origin,approx);
+  return CalcPSNR(mse);
+}

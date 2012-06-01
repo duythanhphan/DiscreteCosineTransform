@@ -14,6 +14,7 @@ using namespace std;
  QImage IplImage2QImage(const _IplImage *iplImage);
  IplImage* qImage2IplImage(const QImage& qImage);
 
-
-
+ double CalcMSE(Mat origin,Mat approx);
+ double CalcPSNR(double mse);
+ double myPSNR(Mat origin,Mat approx);
 #endif // LIBS_H
