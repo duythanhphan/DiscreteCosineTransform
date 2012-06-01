@@ -4,6 +4,7 @@
 #include<opencv2/opencv.hpp>
 
 #include"fundamental.h"
+#include"report.h"
 #include"1DDCT.h"
 #include"2DDCT.h"
 

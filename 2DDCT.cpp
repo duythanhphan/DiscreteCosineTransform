@@ -32,8 +32,29 @@ double Sum_2D_DCT(Mat mtx, int u, int v, int N, int M)
   return sum;
 }
 
-Mat imgInverse_2D_DCT(Mat mtx)
+Mat imgInverse_2D_DCT(Mat mtxD,int coefficient)
 {
+  Mat mtx;
+  if(coefficient==0)
+    {
+      mtx=mtxD.clone();
+    }
+  else if(coefficient!=0)
+    {
+        mtx=Mat(mtxD.rows,mtxD.cols,CV_64F);
+        for(int i=0;i<mtxD.rows;i++)
+          for(int j=0;j<mtxD.cols;j++)
+            {
+              if(i<mtxD.rows/sqrt(coefficient)&&j<mtxD.cols/sqrt(coefficient))
+                {
+                  mtx.at<double>(i,j)=mtxD.at<double>(i,j);
+                }
+              else
+                {
+                  mtx.at<double>(i,j)=0;
+                }
+            }
+    }
   int N=mtx.rows;
   int M=mtx.cols;
    Mat res(mtx.rows,mtx.cols,CV_8U);
@@ -89,7 +110,7 @@ vector<Mat> img88DCT(Mat mtx)
   return blocks;
 }
 
-Mat img88Inverse_DCT(vector<Mat> vmtx, int rows, int cols)
+Mat img88Inverse_DCT(vector<Mat> vmtx, int rows, int cols,int coefficient)
 {
    Mat res(rows,cols,CV_8U);
    res.setTo(0);
@@ -97,7 +118,7 @@ Mat img88Inverse_DCT(vector<Mat> vmtx, int rows, int cols)
   for(unsigned int i=0;i<vmtx.size();i++)
     {
         Mat temp(8,8,CV_8U);
-        temp=imgInverse_2D_DCT(vmtx[i]);
+        temp=imgInverse_2D_DCT(vmtx[i],coefficient);
         inv.push_back(temp);
     }
   for(int i=0;i<rows/8;i++)

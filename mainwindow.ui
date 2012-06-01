@@ -52,6 +52,7 @@
     </property>
     <addaction name="action_RowThenColumn"/>
     <addaction name="actionI1DDCT"/>
+    <addaction name="action1D_Coefficient_Report"/>
    </widget>
    <widget class="QMenu" name="menu2DDCT">
     <property name="title">
@@ -61,6 +62,8 @@
     <addaction name="actionInverseWholeImage"/>
     <addaction name="action8_8_blocks"/>
     <addaction name="actionIn_verse_8_8_blocks"/>
+    <addaction name="action2D_Coefficient_Re_port"/>
+    <addaction name="action2D_blocks_Coefficient_Report"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_1DDCT"/>
@@ -172,6 +175,51 @@
   <action name="actionIn_verse_8_8_blocks">
    <property name="text">
     <string>In&amp;verse 8*8 blocks</string>
+   </property>
+  </action>
+  <action name="action1_4DCT_Coefficient">
+   <property name="text">
+    <string>1/4DCT Coefficient</string>
+   </property>
+  </action>
+  <action name="action1_16DCT_Coefficient">
+   <property name="text">
+    <string>1/16DCT Coefficient</string>
+   </property>
+  </action>
+  <action name="action1_64DCT_Coefficient">
+   <property name="text">
+    <string>1/64DCT Coefficient</string>
+   </property>
+  </action>
+  <action name="action1_4_2D_Coefficient">
+   <property name="text">
+    <string>1/4 2D Coefficient</string>
+   </property>
+  </action>
+  <action name="action1_16_2D_Coefficient">
+   <property name="text">
+    <string>1/16 2D Coefficient</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Other_Coefficient_Repport">
+   <property name="text">
+    <string>Generate Other Coefficient Repport</string>
+   </property>
+  </action>
+  <action name="action1D_Coefficient_Report">
+   <property name="text">
+    <string>1D Coefficient Re&amp;port</string>
+   </property>
+  </action>
+  <action name="action2D_Coefficient_Re_port">
+   <property name="text">
+    <string>2D Coefficient Re&amp;port</string>
+   </property>
+  </action>
+  <action name="action2D_blocks_Coefficient_Report">
+   <property name="text">
+    <string>2D &amp;blocks Coefficient Report</string>
    </property>
   </action>
  </widget>

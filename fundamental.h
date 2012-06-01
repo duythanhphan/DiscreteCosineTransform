@@ -32,12 +32,15 @@
 #include"libs.h"
 #include"ui_mainwindow.h"
 
-
+#include"report.h"
 using namespace std;
 using namespace cv;
 namespace Ui{
   class ImageDisplayer;
 }
+
+
+
 class ImageDisplayer:public QMainWindow
 {
   Q_OBJECT
@@ -53,6 +56,7 @@ public:
   vector<Mat> M88DCT;
   Mat M88iDCT;
   IplImage *img;
+  Report rpt1D,rpt2D,rpt2Dblocks;
 public slots:
   void loadImage();
   void on_actionOpen_triggered();
@@ -68,11 +72,16 @@ public slots:
   void on_actionInverseWholeImage_triggered();
   void on_action8_8_blocks_triggered();
   void on_actionIn_verse_8_8_blocks_triggered();
+  void on_action1D_Coefficient_Report_triggered();
+  void on_action2D_Coefficient_Re_port_triggered();
+  void on_action2D_blocks_Coefficient_Report_triggered();
 private:
   Ui::ImageDisplayer *ui;
   QLabel *imageLabel;
   QScrollArea *scrollArea;
   QCommonStyle  qcs;
+  QImage Image1D,Image2D,ImageBlocks;
+  QString Evaluation1D,Evaluation2D,Evaluation2Dblocks;
 private:
   void initializeShortcuts();
   void initializeWidgets();
@@ -84,6 +93,14 @@ private:
   void adjustScrollBar(QScrollBar* scrollBar, double factor);
   void zoomIn();
   void zoomOut();
+  void clean();
+  QString get1Dtime();
+  QString get2Dtime();
+  QString get2DblocksTime();
+
+  void Inverse_1D_DCT(int coefficient);
+  void Inverse_2D_DCT(int coefficient);
+  void Inverse_2D_blocks_DCT(int coefficient);
   double scaleFactor;
 protected:
   //  void initializeGL();

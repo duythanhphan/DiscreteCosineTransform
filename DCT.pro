@@ -14,15 +14,21 @@ SOURCES += main.cpp\
     libs.cpp \
     fundamental.cpp \
     1DDCT.cpp \
-    2DDCT.cpp
+    2DDCT.cpp \
+    report.cpp \
+    1Dui.cpp \
+    2Dui.cpp \
+    2Dblocks_ui.cpp
 
 HEADERS  += \
     fundamental.h \
     libs.h \
     1DDCT.h \
-    2DDCT.h
+    2DDCT.h \
+    report.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    report.ui
 win32 {
             INCLUDEPATH+="D:/Program Files/opencv/include/opencv"
             LFLAGS = -static-libgcc
