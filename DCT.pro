@@ -18,14 +18,17 @@ SOURCES += main.cpp\
     report.cpp \
     1Dui.cpp \
     2Dui.cpp \
-    2Dblocks_ui.cpp
+    2Dblocks_ui.cpp \
+    Quantilization.cpp \
+    Quantilize_ui.cpp
 
 HEADERS  += \
     fundamental.h \
     libs.h \
     1DDCT.h \
     2DDCT.h \
-    report.h
+    report.h \
+    Quantilization.h
 
 FORMS    += mainwindow.ui \
     report.ui
@@ -38,7 +41,7 @@ win32 {
 }
 
 unix {
-            LIBS+= -lGLU -lopencv_core -lopencv_highgui -lopencv_imgproc
+            LIBS+= -lGLU -lopencv_core -lopencv_highgui -lopencv_imgproc -lqwt
 }
 
 RESOURCES += \

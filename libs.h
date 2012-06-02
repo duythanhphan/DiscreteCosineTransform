@@ -8,6 +8,7 @@
 #include"1DDCT.h"
 #include"2DDCT.h"
 
+
 #define PI 3.14159265
 
 using namespace cv;

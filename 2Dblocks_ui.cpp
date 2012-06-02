@@ -98,7 +98,7 @@ void ImageDisplayer::on_action2D_blocks_Coefficient_Report_triggered()
   Inverse_2D_blocks_DCT(64);
   eva[3]=Evaluation2Dblocks;
   inv_img[3]=QImage(ImageBlocks);
-
+  rpt2Dblocks.setWindowTitle("2D Blocks Report");
   rpt2Dblocks.setReport(transTime,eva,inv_img);
   rpt2Dblocks.show();
 }

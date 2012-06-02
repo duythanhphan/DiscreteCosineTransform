@@ -97,7 +97,7 @@ void ImageDisplayer::on_action2D_Coefficient_Re_port_triggered()
   Inverse_2D_DCT(64);
   eva[3]=Evaluation2D;
   inv_img[3]=QImage(Image2D);
-
+  rpt2D.setWindowTitle("2D Report");
   rpt2D.setReport(transTime,eva,inv_img);
   rpt2D.show();
 }

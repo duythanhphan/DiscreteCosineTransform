@@ -20,6 +20,9 @@
 #include<QStyle>
 #include<QCommonStyle>
 
+#include<qwt/qwt_plot.h>
+#include<qwt/qwt_plot_curve.h>
+
 #ifdef Q_WS_X11
 #include<opencv2/opencv.hpp>
 #endif
@@ -33,6 +36,8 @@
 #include"ui_mainwindow.h"
 
 #include"report.h"
+
+
 using namespace std;
 using namespace cv;
 namespace Ui{
@@ -54,9 +59,16 @@ public:
   Mat M1DDCT,Mi1DDCT;
   Mat M2DDCT_whole,Mi2DDCT_whole;
   vector<Mat> M88DCT;
+  vector<Mat> M88DCT_Q;
+  vector<Mat> M88orig;
+  vector<Mat> M88blocksiDCT_Q;
   Mat M88iDCT;
+  Mat M88iDCT_Q;
   IplImage *img;
   Report rpt1D,rpt2D,rpt2Dblocks;
+  Mat Qjpeg,Qcannon,Qnikon;
+  vector<double> BlocksPSNR;
+  double avePSNR;
 public slots:
   void loadImage();
   void on_actionOpen_triggered();
@@ -75,6 +87,10 @@ public slots:
   void on_action1D_Coefficient_Report_triggered();
   void on_action2D_Coefficient_Re_port_triggered();
   void on_action2D_blocks_Coefficient_Report_triggered();
+  void on_action_JpegQ_triggered();
+  void on_action_a_Q_triggered();
+  void on_action_CannonQ_triggered();
+  void on_action_NikonQ_triggered();
 private:
   Ui::ImageDisplayer *ui;
   QLabel *imageLabel;
@@ -86,6 +102,7 @@ private:
   void initializeShortcuts();
   void initializeWidgets();
   void initializeIcons();
+  void initializeQ();
   void fitToWindow();
   void normalSize();
   void updateActions();
@@ -97,7 +114,7 @@ private:
   QString get1Dtime();
   QString get2Dtime();
   QString get2DblocksTime();
-
+  void CalcBlocksPSNR();
   void Inverse_1D_DCT(int coefficient);
   void Inverse_2D_DCT(int coefficient);
   void Inverse_2D_blocks_DCT(int coefficient);

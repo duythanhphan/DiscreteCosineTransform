@@ -14,4 +14,5 @@ double Sum_Inverse_2D_DCT(Mat mtx,int i,int j,int N,int M);
 vector<Mat> img88DCT(Mat mtx);
 Mat img88Inverse_DCT(vector<Mat> vmtx,int rows,int cols,int coe);
 
+
 #endif // D2DDCT_H

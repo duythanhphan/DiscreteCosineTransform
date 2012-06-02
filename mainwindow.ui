@@ -65,9 +65,19 @@
     <addaction name="action2D_Coefficient_Re_port"/>
     <addaction name="action2D_blocks_Coefficient_Report"/>
    </widget>
+   <widget class="QMenu" name="menu_Quantilize">
+    <property name="title">
+     <string>&amp;Quantilize</string>
+    </property>
+    <addaction name="action_JpegQ"/>
+    <addaction name="action_a_Q"/>
+    <addaction name="action_CannonQ"/>
+    <addaction name="action_NikonQ"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_1DDCT"/>
    <addaction name="menu2DDCT"/>
+   <addaction name="menu_Quantilize"/>
    <addaction name="menu_View"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -220,6 +230,26 @@
   <action name="action2D_blocks_Coefficient_Report">
    <property name="text">
     <string>2D &amp;blocks Coefficient Report</string>
+   </property>
+  </action>
+  <action name="action_JpegQ">
+   <property name="text">
+    <string>&amp;JpegQ</string>
+   </property>
+  </action>
+  <action name="action_a_Q">
+   <property name="text">
+    <string>&amp;a*Q</string>
+   </property>
+  </action>
+  <action name="action_CannonQ">
+   <property name="text">
+    <string>&amp;CannonQ</string>
+   </property>
+  </action>
+  <action name="action_NikonQ">
+   <property name="text">
+    <string>&amp;NikonQ</string>
    </property>
   </action>
  </widget>

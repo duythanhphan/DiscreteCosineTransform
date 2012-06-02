@@ -90,13 +90,6 @@ double Sum_Inverse_2D_DCT(Mat mtx, int i, int j, int N, int M)
 
 vector<Mat> img88DCT(Mat mtx)
 {
-//  ofstream outfile;
-//  outfile.open("880.log",ios::out);
-
-// outfile<<mtx<<endl;
-// outfile.close();
-// outfile.open("881.log",ios::out);
-
   vector<Mat> blocks;
   Mat temp,res;
   for(int i=0;i<mtx.rows/8;i++)

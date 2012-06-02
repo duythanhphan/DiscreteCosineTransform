@@ -106,7 +106,7 @@ void ImageDisplayer::on_action1D_Coefficient_Report_triggered()
   Inverse_1D_DCT(64);
   eva[3]=Evaluation1D;
   inv_img[3]=QImage(Image1D);
-
+  rpt1D.setWindowTitle("1D Report");
   rpt1D.setReport(transTime,eva,inv_img);
   rpt1D.show();
 }
